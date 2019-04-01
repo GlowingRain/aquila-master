@@ -1,0 +1,26 @@
+{
+  "name": "aquila-master",
+  "version": "1.0.0",
+  "description": "Aquila using Discord.js & Akairo master",
+  "main": "aquila.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlowingRain/aquila-master.git"
+  },
+  "author": "GlowingRain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GlowingRain/aquila-master/issues"
+  },
+  "homepage": "https://github.com/GlowingRain/aquila-master#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "github:discordjs/discord.js",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0"
+  }
+}
