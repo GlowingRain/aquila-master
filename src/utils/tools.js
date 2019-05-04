@@ -19,7 +19,7 @@ module.exports.deleteMessageAfterSent = (message, content, interval) => {
 
 module.exports.embedMessage = (message, content, hex) => {
     let regex = hexColorRegex().test(hex);
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setDescription(`${content}`);
 
     if (regex === true) {

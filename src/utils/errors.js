@@ -1,8 +1,8 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const colors = require('./colors');
 
 module.exports.errorMessage = (error, message) => {
-    const errorMsg = new RichEmbed()
+    const errorMsg = new MessageEmbed()
         .setColor(colors['red'])
         .setDescription(`**\`[ERROR]\`** - ${error}`);
 
@@ -10,7 +10,7 @@ module.exports.errorMessage = (error, message) => {
 };
 
 module.exports.warnMessage = (warning, message) => {
-    const warnMsg = new RichEmbed()
+    const warnMsg = new MessageEmbed()
         .setColor(colors['orange'])
         .setDescription(`**\`[AVISO]\`** - ${warning}`);
 
@@ -18,7 +18,7 @@ module.exports.warnMessage = (warning, message) => {
 };
 
 module.exports.successMessage = (content, message) => {
-    const succMsg = new RichEmbed()
+    const succMsg = new MessageEmbed()
         .setColor(colors['green'])
         .setDescription(`**\`[ÉXITO]\`** - ${content}`);
 

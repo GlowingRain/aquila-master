@@ -1,29 +1,34 @@
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
+
+// Dotenv
 require('dotenv').config();
+
+// Constants
+const token = process.env.CLIENT_TOKEN;
+const ownerID = process.env.OWNER_ID;
+const prefix = process.env.PREFIX;
 
 class AquilaMaster extends AkairoClient {
     constructor() {
-        super({ ownerID: process.env.OWNER_ID }, { disableEveryone: true });
+        super({ ownerID: ownerID }, { disableEveryone: true });
 
         this.commandHandler = new CommandHandler(this, {
             // Main configuration
             directory: "./src/commands",
-            prefix: process.env.PREFIX,
+            prefix: prefix,
             automateCategories: true,
 
-            // Emiters
-            emitters: {
-                process
-            },
-
-            // Prompt defaults
-            defaultPrompt: {
-                timeout: message => 'El tiempo se agotó, se ha cancelado el comando.',
-                ended: message => 'Se ha cancelado el comando debido a multiples intentos.',
-                cancel: message => 'El comando ha sido cancelado.',
-                cancelWord: 'cancelar',
-                retries: 2,
-                time: 30000
+            // Prompts
+            argumentDefaults: {
+                prompt: {
+                    modifyStart: str => `${str}\n\nEscribe \`cancelar\` para cancelar el comando.`,
+                    modifyRetry: str => `${str}\n\nEscribe\`cancelar\` para cancelar el comando.`,
+                    timeout: 'El tiempo se agotó. El comando ha sido cancelado.',
+                    ended: 'Se han detectado muchos intentos. El comando ha sido cancelado.',
+                    cancel: 'Se ha cancelado el comando',
+                    retries: 2,
+                    time: 30000 
+                }
             }
         });
 
@@ -41,4 +46,4 @@ class AquilaMaster extends AkairoClient {
 }
 
 const client = new AquilaMaster();
-client.login(process.env.CLIENT_TOKEN);
+client.login(token);
